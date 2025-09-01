@@ -1,0 +1,5 @@
+<div>
+    <label for="input">Escribe algo:</label>
+    <input id="input" [(ngModel)]="inputValue" (ngModelChange)="onValueChange()"/>
+    <p>Valor ingresado desde el componente hijo: {{inputValue}}</p>
+</div>

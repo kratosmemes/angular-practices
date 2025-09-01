@@ -1,0 +1,63 @@
+<app-two-way-binding (valueChanged)="onValueChanged($event)"></app-two-way-binding>
+<p>Valor ingresado desde el componente padre: {{inputValue}}</p>
+
+<app-two-way-binding-two></app-two-way-binding-two>
+<p>Valor recibido en app.component: {{ inputValue$ | async }}</p>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="w-50">
+      <mat-card>
+        <mat-card-content>
+          <div class="row">
+            <div class="col-3 mt-2">
+              <mat-radio-group>
+                <mat-radio-button value=1>Remesa</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="col-9">
+              <mat-form-field class="w-100">
+                <mat-label>Nombre De La Remesa</mat-label>
+                <input matInput/>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <mat-form-field class="w-100">
+                <input matInput placeholder="Nombre De La Factura">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field class="w-100">
+                <input matInput placeholder="Consenso De La Factura">
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field class="w-100">
+                <input matInput placeholder="RFC De La Factura">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+                <mat-form-field class="w-100">
+                  <mat-label>Comentarios De La Factura</mat-label>
+                  <textarea matInput style="height: 200px; resize: none;"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <mat-card-actions class="d-flex justify-content-end">
+                <button matButton>ENVIAR</button>
+              </mat-card-actions>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
