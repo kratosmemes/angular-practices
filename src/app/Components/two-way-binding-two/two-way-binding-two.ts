@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ValueService } from '../value';
+import { ValueService } from '../../value';
 
 @Component({
   selector: 'app-two-way-binding-two',

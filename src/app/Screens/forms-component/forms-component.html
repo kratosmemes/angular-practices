@@ -1,0 +1,5 @@
+<app-two-way-binding (valueChanged)="onValueChanged($event)"></app-two-way-binding>
+<p>Valor ingresado desde el componente padre: {{inputValue}}</p>
+
+<app-two-way-binding-two></app-two-way-binding-two>
+<p>Valor recibido en app.component: {{ inputValue$ | async }}</p>
