@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ValueService } from '../../value';
 import { MatFormField, MatInputModule } from '@angular/material/input';
@@ -11,6 +11,9 @@ import { MatFormField, MatInputModule } from '@angular/material/input';
 })
 export class TwoWayBindingTwo {
   public inputValue: string = '';
+
+  @Input()
+  public classes: string[] = [];
 
   constructor(private valueService: ValueService){}
 

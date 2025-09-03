@@ -4,9 +4,8 @@
             <mat-card-header>
                 <mat-card-title>Two Way Binding con ngModel</mat-card-title>
             </mat-card-header>
-            <br>
-            <mat-card-content>
-                <app-two-way-binding (valueChanged)="onValueChanged($event)"></app-two-way-binding>
+            <mat-card-content class="pt-2">
+                <app-two-way-binding [classes]="['w-100']" (valueChanged)="onValueChanged($event)"></app-two-way-binding>
                 <p>Valor ingresado desde el componente padre: {{inputValue}}</p>
             </mat-card-content>
         </mat-card>
@@ -17,9 +16,8 @@
             <mat-card-header>
                 <mat-card-title>Two Way Binding con ReactiveForms</mat-card-title>
             </mat-card-header>
-            <br>
-            <mat-card-content>
-                <app-two-way-binding-two></app-two-way-binding-two>
+            <mat-card-content class="pt-2">
+                <app-two-way-binding-two [classes]="['w-100']"></app-two-way-binding-two>
                 <p>Valor recibido en app.component: {{ inputValue$ | async }}</p>
             </mat-card-content>
         </mat-card>

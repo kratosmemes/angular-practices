@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormField, MatInputModule } from '@angular/material/input';
 
@@ -9,7 +9,10 @@ import { MatFormField, MatInputModule } from '@angular/material/input';
   styleUrls: ['./two-way-binding.scss'],
 })
 export class TwoWayBinding {
-  public inputValue: string = '';
+  public inputValue: string = ''; 
+  
+  @Input()
+  public classes: string[] = [];
 
   @Output()
   valueChanged = new EventEmitter<string>();
