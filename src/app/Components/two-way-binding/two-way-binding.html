@@ -1,5 +1,7 @@
 <div>
-    <label for="input">Escribe algo:</label>
-    <input id="input" [(ngModel)]="inputValue" (ngModelChange)="onValueChange()"/>
+    <mat-form-field>
+        <mat-label>Escribe algo:</mat-label>
+        <input matInput [(ngModel)]="inputValue" (ngModelChange)="onValueChange()"/>
+    </mat-form-field>
     <p>Valor ingresado desde el componente hijo: {{inputValue}}</p>
 </div>

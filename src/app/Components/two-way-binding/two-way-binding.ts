@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatFormField, MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-two-way-binding',
-  imports: [FormsModule],
+  imports: [FormsModule, MatFormField, MatInputModule],
   templateUrl: './two-way-binding.html',
   styleUrls: ['./two-way-binding.scss'],
 })

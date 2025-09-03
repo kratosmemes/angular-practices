@@ -1,14 +1,27 @@
-<app-two-way-binding (valueChanged)="onValueChanged($event)"></app-two-way-binding>
-<p>Valor ingresado desde el componente padre: {{inputValue}}</p>
-
-<app-two-way-binding-two></app-two-way-binding-two>
-<p>Valor recibido en app.component: {{ inputValue$ | async }}</p>
-
 <div class="container">
-    <div class="card">
-        <div class="card-body">
-            <label>Nombre</label>
-            <input class="form-control">
-        </div>
+    <div class="pt-5">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Two Way Binding con ngModel</mat-card-title>
+            </mat-card-header>
+            <br>
+            <mat-card-content>
+                <app-two-way-binding (valueChanged)="onValueChanged($event)"></app-two-way-binding>
+                <p>Valor ingresado desde el componente padre: {{inputValue}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <br/>
+    <div class="pt-2">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Two Way Binding con ReactiveForms</mat-card-title>
+            </mat-card-header>
+            <br>
+            <mat-card-content>
+                <app-two-way-binding-two></app-two-way-binding-two>
+                <p>Valor recibido en app.component: {{ inputValue$ | async }}</p>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

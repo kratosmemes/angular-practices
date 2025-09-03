@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from '../../models/user.model';
+import { User } from '../../Models/user.model';
 import { UserService } from '../../Services/user-service';
 import { MatTableModule } from '@angular/material/table';
 import { NgClass } from '@angular/common';

@@ -4,14 +4,17 @@ import { TwoWayBindingTwo } from '../../Components/two-way-binding-two/two-way-b
 import { Observable } from 'rxjs';
 import { ValueService } from '../../value';
 import { AsyncPipe } from '@angular/common';
+import { MatCard, MatCardModule } from "@angular/material/card";
 
 @Component({
   selector: 'app-forms-component.html',
   imports: [
     TwoWayBinding,
     TwoWayBindingTwo,
-    AsyncPipe
-  ],
+    AsyncPipe,
+    MatCard,
+    MatCardModule
+],
   templateUrl: './forms-component.html',
   styleUrls: ['./forms-component.scss']
 })
