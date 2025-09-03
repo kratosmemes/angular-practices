@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="pt-5">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <app-reactive-input [label]="'Nombre'" [control]="nombreControl"></app-reactive-input>
+            <app-reactive-input [label]="'Apellido Paterno'" [control]="apellidoPaternoControl"></app-reactive-input>
+            <app-reactive-input [label]="'Apellido Materno'" [control]="apellidoMaternoControl"></app-reactive-input>
+            <app-reactive-input [label]="'Edad'" [control]="edadControl"></app-reactive-input>
+            <div class="d-flex align-items-center justify-content-center">
+                <button class="w-50" type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
+</div>
