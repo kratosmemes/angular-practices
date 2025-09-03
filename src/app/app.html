@@ -1,1 +1,19 @@
+<mat-toolbar color="primary">
+  <span>Mi App</span>
+  <span class="spacer"></span>
+
+  <button mat-button routerLink="/forms">Forms</button>
+  <button mat-button routerLink="/material">Material</button>
+  <button mat-button routerLink="/reactiveForms">ReactiveForms</button>
+
+  <!-- Botón con submenú -->
+  <button mat-button [matMenuTriggerFor]="usersMenu">Users</button>
+
+  <mat-menu #usersMenu="matMenu">
+    <button mat-menu-item routerLink="/users/list">Lista de usuarios</button>
+    <button mat-menu-item routerLink="/users/create">Crear usuario</button>
+    <button mat-menu-item routerLink="/users/settings">Configuración</button>
+  </mat-menu>
+</mat-toolbar>
+
 <router-outlet></router-outlet>
