@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { User } from '../../models/user.model';
 import { UserService } from '../../Services/user-service';
 import { MatTableModule } from '@angular/material/table';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-user-list',
-  imports: [MatTableModule],
+  imports: [MatTableModule, NgClass],
   templateUrl: './user-list.html',
   styleUrls: ['./user-list.scss']
 })
@@ -35,4 +36,9 @@ export class UsersListComponent {
   }
 
   displayedColumns: string[] = ['id', 'nombre', 'email']
+
+  shouldGrayOut(row: any): boolean {
+    //return row.email.includes('test');
+    return !row.isActive;
+  }
 }
