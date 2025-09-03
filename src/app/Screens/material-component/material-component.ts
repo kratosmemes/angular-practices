@@ -19,7 +19,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatCardModule,
   ],
   templateUrl: './material-component.html',
-  styleUrl: './material-component.css'
+  styleUrls: ['./material-component.scss']
 })
 export class MaterialComponent {
 

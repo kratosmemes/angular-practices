@@ -6,7 +6,7 @@ import { ValueService } from '../../value';
   selector: 'app-two-way-binding-two',
   imports: [FormsModule],
   templateUrl: './two-way-binding-two.html',
-  styleUrl: './two-way-binding-two.css',
+  styleUrls: ['./two-way-binding-two.scss'],
 })
 export class TwoWayBindingTwo {
   public inputValue: string = '';

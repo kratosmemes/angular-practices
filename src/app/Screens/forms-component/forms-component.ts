@@ -13,7 +13,7 @@ import { AsyncPipe } from '@angular/common';
     AsyncPipe
   ],
   templateUrl: './forms-component.html',
-  styleUrl: './forms-component.css'
+  styleUrls: ['./forms-component.scss']
 })
 export class FormsComponent {
   inputValue: string = '';

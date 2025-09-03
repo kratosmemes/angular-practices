@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-two-way-binding',
   imports: [FormsModule],
   templateUrl: './two-way-binding.html',
-  styleUrl: './two-way-binding.css',
+  styleUrls: ['./two-way-binding.scss'],
 })
 export class TwoWayBinding {
   public inputValue: string = '';
