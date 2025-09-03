@@ -44,13 +44,24 @@ constructor(private fb: FormBuilder) {
 }
 
   onSubmit() {
-    if (this.form.valid) {
+    
+    let isNombreValid = this.nombreControl.errors?.['required'];
+    let isApellidoPaternoValid = this.apellidoPaternoControl.errors?.['required'];
+    let isApellidoMaternoValid = this.apellidoMaternoControl.errors?.['required'];
+    let isEdadValid = this.edadControl.errors?.['required'];
+
+    if(this.form.valid) {
       const raw = this.form.get('nombre')?.value;
       const clean = this.sanitizeInput(raw);
       console.log('Nombre limpio:', clean);
     } 
     
-    if(this.nombreControl.errors?.['required']) {
+    if(
+      isNombreValid ||
+      isApellidoPaternoValid || 
+      isApellidoMaternoValid || 
+      isEdadValid
+    ) {
       this._snackBar.open("Es necesario ingresar todos los campos para poder continuar", "", {  
         duration: 2000
       });    
