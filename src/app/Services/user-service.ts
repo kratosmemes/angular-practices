@@ -2,18 +2,19 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environment/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { User } from '../Models/user.model';
+import { UserData } from '../Models/user-data.model';
+import { UserResponse } from '../Models/user-response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl = `${environment.apiUrl}/Users/GetUsers`;
+  private baseUrl = `${environment.apiUrl}/Users/GetAllUsers`;
   
   constructor(private httpClient: HttpClient) { }
 
-  getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.baseUrl).pipe(
+  getUsers(): Observable<UserResponse> {
+    return this.httpClient.get<UserResponse>(this.baseUrl).pipe(
       catchError(this.handleError)
     );
   }

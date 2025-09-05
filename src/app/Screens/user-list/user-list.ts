@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from '../../Models/user.model';
+import { UserData } from '../../Models/user-data.model';
 import { UserService } from '../../Services/user-service';
 import { MatTableModule } from '@angular/material/table';
 import { NgClass } from '@angular/common';
@@ -11,7 +11,7 @@ import { NgClass } from '@angular/common';
   styleUrls: ['./user-list.scss']
 })
 export class UsersListComponent {
-  users: User[] = [];
+  users: UserData[] = [];
   isLoading = false;
   error: string | null = null;
 
@@ -24,8 +24,9 @@ export class UsersListComponent {
   fetchUsers(): void {
     this.isLoading = true;
     this.userService.getUsers().subscribe({
-      next: (data) => {
-        this.users = data;
+      next: (response) => {
+        console.log(response);
+        this.users = response.data;
         this.isLoading = false;
       },
       error: (err) => {
@@ -35,10 +36,9 @@ export class UsersListComponent {
     });
   }
 
-  displayedColumns: string[] = ['id', 'nombre', 'email']
+  displayedColumns: string[] = ['Nombre', 'ApellidoPaterno', 'ApellidoMaterno', 'Edad', 'isActivo'];
 
-  shouldGrayOut(row: any): boolean {
-    //return row.email.includes('test');
-    return !row.isActive;
+  shouldGrayOut(row: UserData): boolean {
+    return !row.isActivo;
   }
 }
