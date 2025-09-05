@@ -37,25 +37,20 @@ constructor(private fb: FormBuilder) {
     ]]  
   });
 
-  this.nombreControl = this.form.get('nombre') as FormControl;
+  this.nombreControl          = this.form.get('nombre') as FormControl;
   this.apellidoPaternoControl = this.form.get('apellidoPaterno') as FormControl;
   this.apellidoMaternoControl = this.form.get('apellidoMaterno') as FormControl;
-  this.edadControl = this.form.get('edad') as FormControl;
+  this.edadControl            = this.form.get('edad') as FormControl;
 }
 
-  onSubmit() {
-    
-    let isNombreValid = this.nombreControl.errors?.['required'];
+  onSubmit() {    
+
+    /* ESTO ES LO MISMO QUE ABAJO PERO MÁS LARGO 
+    let isNombreValid          = this.nombreControl.errors?.['required'];
     let isApellidoPaternoValid = this.apellidoPaternoControl.errors?.['required'];
     let isApellidoMaternoValid = this.apellidoMaternoControl.errors?.['required'];
-    let isEdadValid = this.edadControl.errors?.['required'];
+    let isEdadValid            = this.edadControl.errors?.['required'];
 
-    if(this.form.valid) {
-      const raw = this.form.get('nombre')?.value;
-      const clean = this.sanitizeInput(raw);
-      console.log('Nombre limpio:', clean);
-    } 
-    
     if(
       isNombreValid ||
       isApellidoPaternoValid || 
@@ -65,6 +60,21 @@ constructor(private fb: FormBuilder) {
       this._snackBar.open("Es necesario ingresar todos los campos para poder continuar", "", {  
         duration: 2000
       });    
+    }*/
+
+    this.form.markAllAsTouched();
+
+    if(this.form.invalid) {
+      this._snackBar.open("Es necesario ingresar todos los campos para poder enviar", "Cerrar", {  
+        duration: 2000
+      });    
+      return;
+    }
+
+    if(this.form.valid) {
+      const raw = this.form.get('nombre')?.value;
+      const clean = this.sanitizeInput(raw);
+      console.log('Nombre limpio:', clean);
     }
   }
 
