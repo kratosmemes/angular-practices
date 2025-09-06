@@ -10,4 +10,14 @@
         [data]="myData"
         [cellTemplates]="{ name: inputTemplate }"
     ></app-generic-table>
+    <div>
+        <h3>Otra tabla</h3>
+        <app-generic-tablev2
+        [showBottomActions]="true"
+        [buttons]="dynamicButtonsv2"
+        [bottomDivActionsClasses]="['justify-content-end']"
+        [columns]="myColumnsv2"
+        [data]="myDatav2"
+    ></app-generic-tablev2>
+    </div>
 </div>
