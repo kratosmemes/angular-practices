@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { GenericTable } from "../../Shared/generic-table/generic-table";
-import { CdkNoDataRow } from "@angular/cdk/table";
 import { FormsModule } from '@angular/forms';
 import { GenericTableV2 } from '../../Shared/generic-tablev2/generic-tablev2';
 
@@ -11,6 +10,9 @@ import { GenericTableV2 } from '../../Shared/generic-tablev2/generic-tablev2';
   styleUrl: './tablas-component.scss'
 })
 export class TablasComponent {
+
+constructor(private cdr: ChangeDetectorRef) {}
+
   dynamicButtons = [
     { label: 'Agregar',   onClick: () => alert("Agregar") },
     { label: 'Eliminar',  onClick: () => alert("Eliminar") },
@@ -49,4 +51,33 @@ export class TablasComponent {
   accionPersonalizada(row: any) {
     alert('Acción personalizada para ' + row.name);
   }
-}
+
+  accionDesdePadreNomames() {
+      alert("Agregando nueva fila");
+      
+      try {
+        // ✅ Verificación EXTRA segura
+        if (!this.myData || !Array.isArray(this.myData)) {
+          console.warn('myData no era array, reinicializando');
+          this.myData = [];
+        }
+        
+        if (!this.myDatav2 || !Array.isArray(this.myDatav2)) {
+          console.warn('myDatav2 no era array, reinicializando');
+          this.myDatav2 = [];
+        }
+        
+        // ✅ Ahora sí usar spread
+        this.myData = [...this.myData, {name: 'Nuevo', apellidoPaterno: 'Usuario'}];
+        this.myDatav2 = [...this.myDatav2, {name: 'Nuevo', apellidoPaterno: 'Usuario'}];
+        
+      } catch (error) {
+        console.error('Error crítico:', error);
+        // ✅ Fallback absoluto
+        this.myData = [{name: 'Nuevo', apellidoPaterno: 'Usuario'}];
+        this.myDatav2 = [{name: 'Nuevo', apellidoPaterno: 'Usuario'}];
+      }
+      
+      this.cdr.detectChanges();
+    }
+  }

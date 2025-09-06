@@ -24,7 +24,11 @@
               <td>
                 <input class="form-control" placeholder="Nuevo apellido" />
               </td>
-              <td>dqw</td>
+              <td class="position-relative">
+                <div class="position-absolute top-50 start-50 translate-middle">
+                  <mat-icon fontIcon="add_circle_outlined" (click)="onAddClick()"></mat-icon>
+                </div> 
+              </td>
             </tr>
         </tbody>
     </table>
