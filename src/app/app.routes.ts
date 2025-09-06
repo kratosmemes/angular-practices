@@ -8,6 +8,8 @@ import { ReactiveFormsComponent } from "./Screens/reactive-forms-component/react
 import { EmptyScreenComponent } from "./Screens/empty-screen/empty-screen";
 import { authGuard } from "./auth-guard";
 import { LoginComponent } from "./Screens/login-component/login-component";
+import { TodoComponent } from "./Screens/todo-component/todo-component";
+import { TablasComponent } from "./Screens/tablas-component/tablas-component";
 
 export const routes: Routes = [
   { 
@@ -32,20 +34,26 @@ export const routes: Routes = [
     canActivate: [authGuard],
     data: { roles: ['admin'] }
   },
-  { 
+  {
     path: 'todo',
-    component: ReactiveFormsComponent,
+    component: TodoComponent,
     canActivate: [authGuard],
-    data: { roles: ['admin'] }
+    data: { roles: ['admin'] },
+  },
+  {
+    path: 'todo/tablas',
+    component: TablasComponent,
+    canActivate: [authGuard],
+    data: { roles: ['admin'] },
   },
   { 
     path: 'users',
     component: UsersHomeComponent,
     canActivate: [authGuard],
     data: { roles: ['admin'] },
-      children: [
-        { path: 'list', component: UsersListComponent}
+    children: [
+      { path: 'list', component: UsersListComponent}
     ] 
   },
-  { path: '**',       component: NotFoundComponent},
+  { path: '**', component: NotFoundComponent},
 ];

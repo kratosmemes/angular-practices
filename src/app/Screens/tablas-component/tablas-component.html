@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <ng-template #inputTemplate let-row>
+        <input [(ngModel)]="row.name" class="form-control" placeholder="Editar nombre" />
+    </ng-template>
+    <app-generic-table
+        [showBottomActions]="true"
+        [buttons]="dynamicButtons"
+        [bottomDivActionsClasses]="['justify-content-end']"
+        [columns]="myColumns"
+        [data]="myData"
+        [cellTemplates]="{ name: inputTemplate }"
+    ></app-generic-table>
+</div>
