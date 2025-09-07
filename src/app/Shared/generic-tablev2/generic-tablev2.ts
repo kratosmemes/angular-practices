@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, OnChanges, SimpleChanges, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 
@@ -11,12 +11,15 @@ import { MatIcon } from '@angular/material/icon';
   // ✅ Cambiar la estrategia de detección
   changeDetection: ChangeDetectionStrategy.Default
 })
-export class GenericTableV2 implements OnChanges {
+export class GenericTableV2 {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
+  @Input() 
+  data: Array<Record<string, any>> = [];
+
   @Input()
-  showBottomActions = true;
+  showBottomActions: boolean = false;
 
   @Input()
   buttons: Array<{ label: string, onClick: () => void }> = [];
@@ -25,22 +28,7 @@ export class GenericTableV2 implements OnChanges {
   bottomDivActionsClasses: string[] = [];
 
   @Input()
-  columns: Array<{ header: string, field: string }> = [];
-
-  @Input()
-  data: Array<Record<string, any>> = [];
+  columns: Array<{ header: string, field: string }> = []
   
-  @Input()
-  onAddClick: () => void = () => {}
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log('🔄 Cambios detectados en hijo:', changes);
-    
-    // ✅ Forzar la detección de cambios de manera más agresiva
-    if (changes['data']) {
-      setTimeout(() => {
-        this.cdr.detectChanges();
-      });
-    }
-  }
+  @Input() onAddClick: () => void = () => {};
 }

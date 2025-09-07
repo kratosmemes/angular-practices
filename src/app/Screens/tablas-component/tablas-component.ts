@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { GenericTable } from "../../Shared/generic-table/generic-table";
 import { FormsModule } from '@angular/forms';
 import { GenericTableV2 } from '../../Shared/generic-tablev2/generic-tablev2';
@@ -9,9 +9,18 @@ import { GenericTableV2 } from '../../Shared/generic-tablev2/generic-tablev2';
   templateUrl: './tablas-component.html',
   styleUrl: './tablas-component.scss'
 })
-export class TablasComponent {
+export class TablasComponent implements OnInit{
 
-constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) {
+    /* Esto es lo mismo que agregarle la propiedad en la funcion para que mantenga el contexto de aquí */
+    /* Solo que esta manera es mas old school, funciona igualito pero ya es old */
+    /* accionDesdePadre = (): void => {} <- Esto es lo nuevo | Lo de abajo es lo old*/
+    this.accionDesdePadre = this.accionDesdePadre.bind(this);
+  }
+
+  ngOnInit(): void {
+
+  }
 
   dynamicButtons = [
     { label: 'Agregar',   onClick: () => alert("Agregar") },
@@ -52,32 +61,7 @@ constructor(private cdr: ChangeDetectorRef) {}
     alert('Acción personalizada para ' + row.name);
   }
 
-  accionDesdePadreNomames() {
-      alert("Agregando nueva fila");
-      
-      try {
-        // ✅ Verificación EXTRA segura
-        if (!this.myData || !Array.isArray(this.myData)) {
-          console.warn('myData no era array, reinicializando');
-          this.myData = [];
-        }
-        
-        if (!this.myDatav2 || !Array.isArray(this.myDatav2)) {
-          console.warn('myDatav2 no era array, reinicializando');
-          this.myDatav2 = [];
-        }
-        
-        // ✅ Ahora sí usar spread
-        this.myData = [...this.myData, {name: 'Nuevo', apellidoPaterno: 'Usuario'}];
-        this.myDatav2 = [...this.myDatav2, {name: 'Nuevo', apellidoPaterno: 'Usuario'}];
-        
-      } catch (error) {
-        console.error('Error crítico:', error);
-        // ✅ Fallback absoluto
-        this.myData = [{name: 'Nuevo', apellidoPaterno: 'Usuario'}];
-        this.myDatav2 = [{name: 'Nuevo', apellidoPaterno: 'Usuario'}];
-      }
-      
-      this.cdr.detectChanges();
-    }
+  accionDesdePadre = (): void => {
+    this.myDatav2.push({ name: 'Nuevo', apellidoPaterno: 'Usuario' });
   }
+}

@@ -10,15 +10,42 @@
         [data]="myData"
         [cellTemplates]="{ name: inputTemplate }"
     ></app-generic-table>
-    <div>
-        <h3>Otra tabla</h3>
+    <div class="container">
+        <h3>Tabla solo como Renderer</h3>
+        <p>
+            Esta tabla solo funciona como renderer, solo pinta los datos que el padre le dice
+            y no los modifica. La acción de añadir fila la gestiona el padre por medio de la función
+            <code>accionDesdePadre</code>. En donde se mantiene el contexto del padre para actualizar
+            el array <code>myDatav2</code>. El hijo solo pintal los datos que le llegan por el input.
+            Si quitamos que el contexto sea el del padre, la funcion truena, porque intenta buscar
+            <code>myDatav2</code> en el contexto hijo y pues obvio no existe.
+        </p>
         <app-generic-tablev2
         [showBottomActions]="true"
         [buttons]="dynamicButtonsv2"
         [bottomDivActionsClasses]="['justify-content-end']"
         [columns]="myColumnsv2"
         [data]="myDatav2"
-        [onAddClick]="accionDesdePadreNomames"
-    ></app-generic-tablev2>
+        [onAddClick]="accionDesdePadre"
+        ></app-generic-tablev2>
+    </div>
+        <div class="container">
+        <h3>Tabla que tiene two-way-binding</h3>
+        <p>
+            Esta tabla solo funciona como renderer, solo pinta los datos que el padre le dice
+            y no los modifica. La acción de añadir fila la gestiona el padre por medio de la función
+            <code>accionDesdePadre</code>. En donde se mantiene el contexto del padre para actualizar
+            el array <code>myDatav2</code>. El hijo solo pintal los datos que le llegan por el input.
+            Si quitamos que el contexto sea el del padre, la funcion truena, porque intenta buscar
+            <code>myDatav2</code> en el contexto hijo y pues obvio no existe.
+        </p>
+        <app-generic-tablev2
+        [showBottomActions]="true"
+        [buttons]="dynamicButtonsv2"
+        [bottomDivActionsClasses]="['justify-content-end']"
+        [columns]="myColumnsv2"
+        [data]="myDatav2"
+        [onAddClick]="accionDesdePadre"
+        ></app-generic-tablev2>
     </div>
 </div>
