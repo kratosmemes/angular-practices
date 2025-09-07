@@ -2,10 +2,12 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { GenericTable } from "../../Shared/generic-table/generic-table";
 import { FormsModule } from '@angular/forms';
 import { GenericTableV2 } from '../../Shared/generic-tablev2/generic-tablev2';
+import { GenericTableV3 } from '../../Shared/generic-tablev3/generic-tablev3';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-tablas-component',
-  imports: [GenericTable, GenericTableV2, FormsModule],
+  imports: [GenericTable, GenericTableV2, GenericTableV3, FormsModule, JsonPipe],
   templateUrl: './tablas-component.html',
   styleUrl: './tablas-component.scss'
 })
@@ -57,11 +59,29 @@ export class TablasComponent implements OnInit{
     {name: 'Pedro', apellidoPaterno: 'Samsulek'},
   ];
 
+
+  myColumnsv3 = [
+    { header: 'Nombre',           field: 'name' },
+    { header: 'Apellido Paterno', field: 'apellidoPaterno' },
+    { header: 'Acción',           field: 'accion' }
+  ];
+
+  myDatav3: Array<Record<string, any>> = [
+    {name: 'Angel', apellidoPaterno: 'Gonzalez'},
+    {name: 'Pedro', apellidoPaterno: 'Samsulek'},
+  ];
+
   accionPersonalizada(row: any) {
     alert('Acción personalizada para ' + row.name);
   }
 
   accionDesdePadre = (): void => {
-    this.myDatav2.push({ name: 'Nuevo', apellidoPaterno: 'Usuario' });
+    this.myDatav2.push({ name: 'Nuevo', apellidoPaterno: 'Nuevo Apellido' });
+  }
+
+  onAddRow(newRow: Record<string, any>) {
+    this.myDatav3.push(newRow);
+    console.log("Fila a guardar: ", newRow);
+    console.log("Datos actuales: ", this.myDatav3);
   }
 }
