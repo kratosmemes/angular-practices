@@ -1,0 +1,32 @@
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                @for (col of columns; track col.field) {
+                  <th>{{ col.header }}</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @for (row of data; track $index) {
+              <tr>
+                @for (col of columns; track col.field) {
+                  <td>  
+                    <ng-container *ngTemplateOutlet="cellTemplates?.[col.field]; context: { $implicit: row }"></ng-container>
+                    {{ !cellTemplates[col.field] ? row[col.field] : '' }}
+                  </td>
+                }
+              </tr>
+            }
+        </tbody>
+    </table>
+    @if (showBottomActions) {
+        <div class="row">
+            <div class="d-flex" [ngClass]="bottomDivActionsClasses">
+                @for (button of buttons; track button.label) {
+                    <button class="btn btn-primary btn-sm me-1" (click)="button.onClick()">{{ button.label }}</button>
+                }
+            </div>
+        </div>
+    }
+</div>

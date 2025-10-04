@@ -1,0 +1,44 @@
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                @for (col of columns; track col.field) {
+                  <th>{{ col.header }}</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @for (row of data; track $index) {
+              <tr>
+                @for (col of columns; track col.field) {
+                  <td>  
+                    {{ row[col.field] }}
+                  </td>
+                }
+              </tr>
+            }
+            <tr>
+              <td>
+                <input class="form-control" placeholder="Nuevo" disabled/>
+              </td>
+              <td>
+                <input class="form-control" placeholder="Nuevo apellido" disabled/>
+              </td>
+              <td class="position-relative">
+                <div class="position-absolute top-50 start-50 translate-middle">
+                  <mat-icon fontIcon="add_circle_outlined" (click)="onAddClick()"></mat-icon>
+                </div> 
+              </td>
+            </tr>
+        </tbody>
+    </table>
+    @if (showBottomActions) {
+        <div class="row">
+            <div class="d-flex" [ngClass]="bottomDivActionsClasses">
+                @for (button of buttons; track button.label) {
+                    <button class="btn btn-primary btn-sm me-1" (click)="button.onClick()">{{ button.label }}</button>
+                }
+            </div>
+      </div>
+    }
+</div>

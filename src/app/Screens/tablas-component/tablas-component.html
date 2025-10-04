@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="container">
+        <h3>Tabla como input dentro de td de manera dinamica(Incompleto)</h3>
+        <ng-template #inputTemplate let-row>
+            <input [(ngModel)]="row.name" class="form-control" placeholder="Editar nombre" />
+        </ng-template>
+        <app-generic-table
+            [showBottomActions]="true"
+            [buttons]="dynamicButtons"
+            [bottomDivActionsClasses]="['justify-content-end']"
+            [columns]="myColumns"
+            [data]="myData"
+            [cellTemplates]="{ name: inputTemplate }"
+        ></app-generic-table>
+    </div>
+    <div class="container">
+        <h3>Tabla solo como Renderer</h3>
+        <p>
+            Esta tabla solo funciona como renderer, solo pinta los datos que el padre le dice
+            y no los modifica. La acción de añadir fila la gestiona el padre por medio de la función
+            <code>accionDesdePadre</code>. En donde se mantiene el contexto del padre para actualizar
+            el array <code>myDatav2</code>. El hijo solo pintal los datos que le llegan por el input.
+            Si quitamos que el contexto sea el del padre, la funcion truena, porque intenta buscar
+            <code>myDatav2</code> en el contexto hijo y pues obvio no existe.
+        </p>
+        <app-generic-tablev2
+        [showBottomActions]="true"
+        [buttons]="dynamicButtonsv2"
+        [bottomDivActionsClasses]="['justify-content-end']"
+        [columns]="myColumnsv2"
+        [data]="myDatav2"
+        [onAddClick]="accionDesdePadre"
+        ></app-generic-tablev2>
+    </div>
+        <div class="container">
+        <h3>Tabla que tiene two-way-binding</h3>
+        <p>
+            Esta tabla sirve para agregar nuevas filas y sus valores dentro de un array, se usan
+            <code>@Input</code> y <code>@Output</code> para comunicar el hijo con el padre.
+            El valor que se se inserta el los inputs forms del hijo se envía al padre por medio del
+            del evento <code>(addRow)</code> y el padre actualiza su array <code>myDatav3</code>.
+        </p>
+        <p>Array en vivo</p>
+        <p>{{ myDatav3 | json }}</p>
+        <app-generic-tablev3
+        [showBottomActions]="true"
+        [buttons]="dynamicButtonsv2"
+        [bottomDivActionsClasses]="['justify-content-end']"
+        [columns]="myColumnsv3"
+        [data]="myDatav3"
+        (addRow)="onAddRow($event)"
+        ></app-generic-tablev3>
+    </div>
+</div>
