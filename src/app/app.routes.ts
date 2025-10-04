@@ -10,6 +10,7 @@ import { authGuard } from "./auth-guard";
 import { LoginComponent } from "./Screens/login-component/login-component";
 import { TodoComponent } from "./Screens/todo-component/todo-component";
 import { TablasComponent } from "./Screens/tablas-component/tablas-component";
+import { ManipularDomComponent } from "./Screens/manipular-dom/manipular-dom";
 
 export const routes: Routes = [
   { 
@@ -43,6 +44,12 @@ export const routes: Routes = [
   {
     path: 'todo/tablas',
     component: TablasComponent,
+    canActivate: [authGuard],
+    data: { roles: ['admin'] },
+  },
+  {
+    path: 'todo/manipular-dom',
+    component: ManipularDomComponent,
     canActivate: [authGuard],
     data: { roles: ['admin'] },
   },

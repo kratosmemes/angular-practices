@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="container">
+        <h3>Manipulando con @ViewChild y @ViewChildren</h3>
+        <p>
+            Usando <code>@ViewChild</code> para acceder a elementos del DOM en Angular.
+            No recomendado para manipulación directa del DOM, pero útil para ciertos casos.
+            Puede se inseguro en aplicaciones con renderizado del lado del servidor.
+            Alternativas incluyen <code>Renderer2</code> y <code>ElementRef</code>
+        </p>
+        <input type="text" placeholder="Type something..." #myInput/>
+        <div #myDiv>This is a div element.</div>
+        @for (item of items; track $index) {
+            <div #myItems>Item {{item}}</div>
+        }
+        <br>
+        <button (click)="manipularDom1()">Manipular</button>
+        <hr>
+    </div>
+    <div class="container">
+
+        <h3>Manupulando con Renderer2 y ElementRef</h3>
+        <p>
+            Usando <code>Renderer2</code> para manipular, es mas seguro ya que no actualiza directamente el
+            DOM, sino que usa una abstracción para hacerlo, como una copia, un espejo.
+        </p>
+        <div id="myDiv2">Contenido</div>
+        <div id="myItems2">
+            @for (item of items2; track $index) {
+                <div>Item {{item}}</div>
+            }
+        </div>
+        <button (click)="manipularDom2()">Manipular con Renderer2</button>
+    </div>
+</div>
